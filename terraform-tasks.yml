@@ -1,12 +1,12 @@
 parameters: 
-  ARM_RG_NAME: "Default Resource Group"
-  ARM_CONTAINER_NAME: "Default Container"
-  ARM_SA_NAME: "Default Storage account"
-  ARM_KEY: "Default Key"
-  ARM_SUBSCRIPTION_ID: "Default Subscription ID"
-  ARM_CLIENT_ID: "Default App ID"
-  ARM_TENANT_ID: "Default Tenant ID"
-  ARM_CLIENT_SECRET: "Default App password"
+  rgName: "Default Resource Group"
+  containerName: "Default Container"
+  saName: "Default Storage account"
+  key: "Default Key"
+  subscriptionId: "Default Subscription ID"
+  clientId: "Default App ID"
+  tenantId: "Default Tenant ID"
+  clientSecret: "Default App password"
 steps:
   - bash: |
       terraform init -reconfigure -backend-config="container_name=${{ parameters.ARM_CONTAINER_NAME }}" \
