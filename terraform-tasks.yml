@@ -7,7 +7,7 @@ parameters:
   ARM_CLIENT_ID: 'Default App ID'
   ARM_TENANT_ID: 'Default Tenant ID'
   ARM_CLIENT_SECRET: 'Default App password'
-
+type: jobList
 jobs:
   - job: TerraformInit
     steps:
