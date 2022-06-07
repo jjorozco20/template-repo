@@ -8,7 +8,6 @@ parameters:
   ARM_TENANT_ID: 'Default Tenant ID'
   ARM_CLIENT_SECRET: 'Default App password'
 
-jobs:
 - job: TerraformInit
   steps:
     - bash: |
@@ -21,7 +20,6 @@ jobs:
         -backend-config="resource_group_name=${{ parameters.ARM_RG_NAME }}" \
         -backend-config="key=${{ parameters.ARM_KEY }}" \
         -input=false
-
 
 - job: TerraformPlan
   dependsOn: "TerraformInit"
@@ -37,7 +35,6 @@ jobs:
         -backend-config="key=${{ parameters.ARM_KEY }}" \
         -input=false
         terraform plan -out=tfplan -input=false
-
 
 - job: waitForValidation
   pool: server
