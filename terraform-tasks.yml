@@ -7,16 +7,15 @@ parameters:
   ARM_CLIENT_ID: "Default App ID"
   ARM_TENANT_ID: "Default Tenant ID"
   ARM_CLIENT_SECRET: "Default App password"
-
-- job: "TerraformInit"
-  steps:
-    - bash: |
-        terraform init -reconfigure -backend-config="container_name=${{ parameters.ARM_CONTAINER_NAME }}" \
-        -backend-config="storage_account_name=${{ parameters.ARM_SA_NAME }}" \
-        -backend-config="subscription_id=${{ parameters.ARM_SUBSCRIPTION_ID }}" \
-        -backend-config="tenant_id=${{ parameters.ARM_TENANT_ID }}" \
-        -backend-config="client_id=${{ parameters.ARM_CLIENT_ID }}" \
-        -backend-config="client_secret=${{ parameters.ARM_CLIENT_SECRET }}" \
-        -backend-config="resource_group_name=${{ parameters.ARM_RG_NAME }}" \
-        -backend-config="key=${{ parameters.ARM_KEY }}" \
-        -input=false
+job: "TerraformInit"
+steps:
+  - bash: |
+      terraform init -reconfigure -backend-config="container_name=${{ parameters.ARM_CONTAINER_NAME }}" \
+      -backend-config="storage_account_name=${{ parameters.ARM_SA_NAME }}" \
+      -backend-config="subscription_id=${{ parameters.ARM_SUBSCRIPTION_ID }}" \
+      -backend-config="tenant_id=${{ parameters.ARM_TENANT_ID }}" \
+      -backend-config="client_id=${{ parameters.ARM_CLIENT_ID }}" \
+      -backend-config="client_secret=${{ parameters.ARM_CLIENT_SECRET }}" \
+      -backend-config="resource_group_name=${{ parameters.ARM_RG_NAME }}" \
+      -backend-config="key=${{ parameters.ARM_KEY }}" \
+      -input=false
