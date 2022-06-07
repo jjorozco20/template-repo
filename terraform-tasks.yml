@@ -8,7 +8,7 @@ parameters:
   ARM_TENANT_ID: "Default Tenant ID"
   ARM_CLIENT_SECRET: "Default App password"
 
-- job: TerraformInit
+- job: "TerraformInit"
   steps:
     - bash: |
         terraform init -reconfigure -backend-config="container_name=${{ parameters.ARM_CONTAINER_NAME }}" \
