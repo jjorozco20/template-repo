@@ -7,6 +7,7 @@ parameters:
   clientId: "Default App ID"
   tenantId: "Default Tenant ID"
   clientSecret: "Default App password"
+  terraformPlan: "Decides if goes to the 2 jobs or nah"
 steps:
   - bash: |
       az login --service-principal -u ${{ parameters.clientId }} -p ${{ parameters.clientSecret }} --tenant ${{ parameters.tenantId }}
@@ -19,3 +20,12 @@ steps:
       -backend-config="resource_group_name=${{ parameters.rgName }}" \
       -backend-config="key=${{ parameters.key }}" \
       -input=false
+  - bash: |
+          az login --service-principal -u ${{ parameters.clientId }} -p ${{ parameters.clientSecret }} --tenant ${{ parameters.tenantId }}
+          terraform plan -out=tfplan -var "location=${{ parameters.location }}" \
+          -var "env=${{ parameters.env }}" \
+          -var "owner=${{ parameters.owner }}" \
+          -var "sourceip=${{ parameters.sourceip }}" \
+          -var "password=${{ parameters.password }}" \
+          -input=false
+    condition: eq('${{ parameters.terraformPlan}}', 'true')
