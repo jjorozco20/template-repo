@@ -25,12 +25,10 @@ steps:
       -backend-config="resource_group_name=${{ parameters.rgName }}" \
       -backend-config="key=${{ parameters.key }}" \
       -input=false
-  - bash: |
-          az login --service-principal -u ${{ parameters.clientId }} -p ${{ parameters.clientSecret }} --tenant ${{ parameters.tenantId }}
-          terraform plan -out=tfplan -var "location=${{ parameters.location }}" \
-          -var "env=${{ parameters.envTag }}" \
-          -var "owner=${{ parameters.owner }}" \
-          -var "sourceip=${{ parameters.sourceip }}" \
-          -var "password=${{ parameters.password }}" \
-          -input=false
-    condition: eq('${{ parameters.terraformPlan}}', 'true')
+      echo "Terraform plan task is now being executed."
+      terraform plan -out=tfplan -var "location=${{ parameters.location }}" \
+      -var "env=${{ parameters.envTag }}" \
+      -var "owner=${{ parameters.owner }}" \
+      -var "sourceip=${{ parameters.sourceip }}" \
+      -var "password=${{ parameters.password }}" \
+      -input=false
