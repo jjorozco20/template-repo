@@ -7,7 +7,7 @@ parameters:
   clientId: "Default App ID"
   tenantId: "Default Tenant ID"
   clientSecret: "Default App password"
-  terraformPlan: "Decides if goes to the 2 jobs or nah"
+  terraformPlan: "Decides the 2 jobs"
   location: "Defines the location of the vm"
   envTag: "Defines the machine environment type"
   password: "You knowwwww"
@@ -25,10 +25,4 @@ steps:
       -backend-config="resource_group_name=${{ parameters.rgName }}" \
       -backend-config="key=${{ parameters.key }}" \
       -input=false
-      echo "Terraform plan task is now being executed."
-      terraform plan -out=tfplan -var "location=${{ parameters.location }}" \
-      -var "env=${{ parameters.envTag }}" \
-      -var "owner=${{ parameters.owner }}" \
-      -var "sourceip=${{ parameters.sourceip }}" \
-      -var "password=${{ parameters.password }}" \
-      -input=false
+    displayName: Terraform Init
