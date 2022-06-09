@@ -9,7 +9,7 @@ parameters:
   CLIENT_SECRET: "Default App password"
 steps:
   - bash: |
-      az login --service-principal -u ${{ parameters.CLIENT_ID }} -p ${{ parameters.CLIENT_SECRET }} --tenant ${{ parameters.TENANT_ID }}
+      # az login --service-principal -u ${{ parameters.CLIENT_ID }} -p ${{ parameters.CLIENT_SECRET }} --tenant ${{ parameters.TENANT_ID }}
       terraform init -reconfigure -backend-config="container_name=${{ parameters.CONTAINER_NAME }}" \
       -backend-config="storage_account_name=${{ parameters.SA_NAME }}" \
       -backend-config="subscription_id=${{ parameters.SUBSCRIPTION_ID }}" \
