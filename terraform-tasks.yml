@@ -1,28 +1,22 @@
 parameters: 
-  rgName: "Default Resource Group"
-  containerName: "Default Container"
-  saName: "Default Storage account"
-  key: "Default Key"
-  subscriptionId: "Default Subscription ID"
-  clientId: "Default App ID"
-  tenantId: "Default Tenant ID"
-  clientSecret: "Default App password"
-  terraformPlan: "Decides the 2 jobs"
-  location: "Defines the location of the vm"
-  envTag: "Defines the machine environment type"
-  password: "You knowwwww"
-  owner: "The name of the Owner"  
-  sourceip: "you knowwwwww"
+  RGNAME: "Default Resource Group"
+  CONTAINER_NAME: "Default Container"
+  SA_NAME: "Default Storage account"
+  KEY: "Default Key"
+  SUBSCRIPTION_ID: "Default Subscription ID"
+  CLIENT_ID: "Default App ID"
+  TENANT_ID: "Default Tenant ID"
+  CLIENT_SECRET: "Default App password"
 steps:
   - bash: |
-      az login --service-principal -u ${{ parameters.clientId }} -p ${{ parameters.clientSecret }} --tenant ${{ parameters.tenantId }}
-      terraform init -reconfigure -backend-config="container_name=${{ parameters.containerName }}" \
-      -backend-config="storage_account_name=${{ parameters.saName }}" \
-      -backend-config="subscription_id=${{ parameters.subscriptionId }}" \
-      -backend-config="tenant_id=${{ parameters.tenantId }}" \
-      -backend-config="client_id=${{ parameters.clientId }}" \
-      -backend-config="client_secret=${{ parameters.clientSecret }}" \
-      -backend-config="resource_group_name=${{ parameters.rgName }}" \
-      -backend-config="key=${{ parameters.key }}" \
+      az login --service-principal -u ${{ parameters.CLIENT_ID }} -p ${{ parameters.CLIENT_SECRET }} --tenant ${{ parameters.TENANT_ID }}
+      terraform init -reconfigure -backend-config="container_name=${{ parameters.CONTAINER_NAME }}" \
+      -backend-config="storage_account_name=${{ parameters.SA_NAME }}" \
+      -backend-config="subscription_id=${{ parameters.SUBSCRIPTION_ID }}" \
+      -backend-config="tenant_id=${{ parameters.TENANT_ID }}" \
+      -backend-config="client_id=${{ parameters.CLIENT_ID }}" \
+      -backend-config="client_secret=${{ parameters.CLIENT_SECRET }}" \
+      -backend-config="resource_group_name=${{ parameters.RGNAME }}" \
+      -backend-config="key=${{ parameters.KEY }}" \
       -input=false
     displayName: Terraform Init
