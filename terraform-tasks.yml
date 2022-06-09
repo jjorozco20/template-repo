@@ -19,4 +19,4 @@ steps:
       -backend-config="resource_group_name=${{ parameters.RGNAME }}" \
       -backend-config="key=${{ parameters.KEY }}" \
       -input=false
-    displayName: Terraform Init
+    # displayName: Terraform Init
