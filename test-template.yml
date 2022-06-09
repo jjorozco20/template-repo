@@ -1,3 +1,4 @@
 steps: 
 - bash: |
     echo $(azureLocation)
+    echo $VARTEST
